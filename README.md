@@ -8,7 +8,7 @@
 
 *Any files that should not be committed should be added to the `.gitignore` file*
 
-# ECE 398 vip-(Project Name)
+# ECE 398 vip-resistor-sorter
 
 *3-4 sentence description of your project goes here*
 
