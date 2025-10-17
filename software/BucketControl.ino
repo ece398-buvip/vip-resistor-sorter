@@ -6,7 +6,7 @@ Servo pull; // Create a servo object
 
 void setup() {
 pinMode(Magnet,OUTPUT);
-claw.attach(9); // Attach claw servo to Pin 10
+claw.attach(9); // Attach claw servo to Pin 10 (Standard servo with position controls)
 pull.attach(10); // Attach Pull continous servo to Pin 9
 }
 
