@@ -1,24 +1,24 @@
 #include <Servo.h>
 
 // X stepper motor pins
-#define X_DIR_PIN 5  // 2 originally
-#define X_STEP_PIN 6 // pwm  3 originally
+#define X_DIR_PIN 47  // 2 originally
+#define X_STEP_PIN 3 // pwm  3 originally
 
 // Y stepper motor pins
-#define Y_DIR_PIN 9
-#define Y_STEP_PIN 10 // pwm
+#define Y_DIR_PIN 46
+#define Y_STEP_PIN 2 // pwm
 
 // Feeder stepper motor pins
-// #define FEEDER_DIR_PIN  7
-// #define FEEDER_STEP_PIN 6       //pwm
+// #define FEEDER_DIR_PIN  48
+// #define FEEDER_STEP_PIN 4       //pwm
 
 // X limit switches
-#define XLIMIT_SWITCH_PINLEFT 2 // Define the limit switch pin originally 8
-#define XLIMIT_SWITCH_PINRIGHT 11
+#define XLIMIT_SWITCH_PINLEFT 51 // Define the limit switch pin originally 8
+//#define XLIMIT_SWITCH_PINRIGHT 11
 
 // Y limit switches
-#define YLIMIT_SWITCH_TOP 13
-#define YLIMIT_SWITCH_BOT 8
+#define YLIMIT_SWITCH_TOP 53
+#define YLIMIT_SWITCH_BOT 52
 
 // Prox Sensor inputs
 #define FEEDER_PROX A0
