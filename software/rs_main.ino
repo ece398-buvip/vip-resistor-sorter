@@ -96,12 +96,13 @@ void ystepping_seq_slow()
     digitalWrite(Y_STEP_PIN, LOW);
     delayMicroseconds(2500);
 }
-
+//LOW LEFT 
+//HIGH RIGHT
 void AutoHome()
 {                                                 // Function to home gantry, X axis first
     pinMode(XLIMIT_SWITCH_PINLEFT, INPUT_PULLUP); // Making
 
-    digitalWrite(X_DIR_PIN, HIGH);
+    digitalWrite(X_DIR_PIN, LOW);//changed
     Serial.println("Beginning auto home for X-Axis...");
 
     while (digitalRead(XLIMIT_SWITCH_PINLEFT) == 1) // waits for limit switch to be pressed (held low)
@@ -109,21 +110,21 @@ void AutoHome()
         xstepping_seq_fast();
     }
 
-    digitalWrite(X_DIR_PIN, LOW); // throw in reverse
+    digitalWrite(X_DIR_PIN, HIGH); // throw in reverse (CHANGED)
 
     for (int i = 0; i <= 150; i++)
     {
         xstepping_seq_medium();
     }
 
-    digitalWrite(X_DIR_PIN, HIGH);                  // reset direction
+    digitalWrite(X_DIR_PIN, LOW);                  // reset direction(CHANGED)
     while (digitalRead(XLIMIT_SWITCH_PINLEFT) == 1) // now marches back waiting for same condition as first.
     {
         xstepping_seq_slow();
     }
 
     Serial.println("Finished!");
-    digitalWrite(X_DIR_PIN, LOW);
+    digitalWrite(X_DIR_PIN, HIGH);
 
     // This is for moving it to bin 0
     // move to true 0,0 function
