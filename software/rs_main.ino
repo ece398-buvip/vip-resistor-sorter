@@ -14,7 +14,7 @@
 
 // X limit switches
 #define XLIMIT_SWITCH_PINLEFT 51 // Define the limit switch pin originally 8
-//#define XLIMIT_SWITCH_PINRIGHT 11
+
 
 // Y limit switches
 #define YLIMIT_SWITCH_TOP 53
