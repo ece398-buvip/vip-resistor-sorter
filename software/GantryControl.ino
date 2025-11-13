@@ -1,22 +1,14 @@
 #include <Servo.h>
-
+Servo SlideServo;
+Servo ForksServo;
 // Prox Sensor inputs
-#define GANTRY_PROX A1 //Metal sensor
+#define GANTRY_PROX A15 //Metal sensor
 
 // Gantry Servos pins
- #define FORKS_SERVO_PWM 9       //pwm SG90
- #define SLIDE_SERVO_PWM 10      //pwm FS5103R Continuous rotation (Stationary at 12.5 ms)
+ #define FORKS_SERVO_PWM 5       //pwm SG90
+ #define SLIDE_SERVO_PWM 6      //pwm FS5103R Continuous rotation (Stationary at 12.5 ms)
 
-#define MAGNET_RELAY A4
-
-
-
-void setup() {
-  pinMode(MAGNET_RELAY,OUTPUT);
-  SlideServo.attach(9); // Attach claw servo to Pin 10 (Standard servo with position controls)
-  ForksServo.attach(10); // Attach Pull continous servo to Pin 9
-
-}
+#define MAGNET_RELAY 8
 
 void start_gantry_seq() //THE TIME DELAY WILL NEED TO BE TESTED
 {
@@ -84,6 +76,19 @@ void start_gantry_seq() //THE TIME DELAY WILL NEED TO BE TESTED
     SlideServo.writeMicroseconds(1500); // stop servo
     delay(300);
 
+}
+
+void setup() {
+  pinMode(MAGNET_RELAY,OUTPUT);
+  SlideServo.attach(9); // Attach claw servo to Pin 10 (Standard servo with position controls)
+  ForksServo.attach(10); // Attach Pull continous servo to Pin 9
+  
+}
+
+
+void loop() {
+  // put your main code here, to run repeatedly:
+  start_gantry_seq();
 }
 
 void loop() {
