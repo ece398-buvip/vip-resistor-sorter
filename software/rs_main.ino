@@ -141,14 +141,14 @@ void AutoHome()
 
     /////////////////////Homing Y Axis///////////////////
 
-    digitalWrite(Y_DIR_PIN, HIGH); // throw in reverse
+    digitalWrite(Y_DIR_PIN, LOW); // throw in reverse
 
     while (digitalRead(YLIMIT_SWITCH_BOT) == 1)
     {
         ystepping_seq_fast();
     }
 
-    digitalWrite(Y_DIR_PIN, LOW);
+    digitalWrite(Y_DIR_PIN, HIGH);
 
     for (int i = 0; i <= 150; i++)
     {
