@@ -161,7 +161,7 @@ void AutoHome()
 // Function to move X stepper motor with limit switch check
 void moveStepper1(int stepPin, int dirPin, int steps, bool direction)
 {
-    digitalWrite(dirPin, direction ? LOW : HIGH); // Set direction
+    digitalWrite(dirPin, direction ? HIGH : LOW); // Set direction
 
     for (int i = 0; i < abs(steps); i++)
     {
@@ -181,12 +181,23 @@ void moveStepper1(int stepPin, int dirPin, int steps, bool direction)
 // Function to move Y stepper motor
 void moveStepper2(int stepPin, int dirPin, int steps, bool direction)
 {
-    digitalWrite(dirPin, direction ? HIGH : HIGH); // Set direction (inverted Y)
-
+    // Pick ONE of these depending on which way is “up” for you:
+    // Option A:
+    digitalWrite(dirPin, direction ? HIGH : LOW);
+    // Option B (invert):
+    // digitalWrite(dirPin, direction ? LOW : HIGH);
+    
+    
     for (int i = 0; i < abs(steps); i++)
     {
+        if (digitalRead(YLIMIT_SWITCH_BOT) == LOW)
+        { // Check if the switch is engaged
+            Serial.println("Limit switch activated! Stopping Y movement.");
+            return; // Stop movement immediately
+        }
+
         digitalWrite(stepPin, HIGH);
-        delayMicroseconds(200); // Adjust speed
+        delayMicroseconds(200);
         digitalWrite(stepPin, LOW);
         delayMicroseconds(200);
     }
@@ -444,7 +455,7 @@ void loop()
         float target_y = Serial.parseFloat(); // Read floating-point input for inches
 
         if (Serial.read() == '\n')
-        { // Ensure full input received
+        { // Ensure full input re
             Serial.print("Moving to: ");
             Serial.print(target_x);
             Serial.print(", ");
